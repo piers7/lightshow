@@ -1,6 +1,6 @@
 #! /bin/sh
 ### BEGIN INIT INFO
-# Provides:          lightstrip
+# Provides:          lights
 # Required-Start:    $remote_fs $syslog
 # Required-Stop:     $remote_fs $syslog
 # Default-Start:     2 3 4 5
@@ -20,7 +20,7 @@
 # PATH should only include /usr/* if it runs after the mountnfs.sh script
 PATH=/sbin:/usr/sbin:/bin:/usr/bin
 DESC="Runs the lightshow"
-NAME=lightshow
+NAME=lights
 PIDFILE=/var/run/$NAME.pid
 LOGFILE=/var/run/$NAME.log
 
@@ -60,8 +60,8 @@ do_start()
 		|| return 1
 	echo "$DAEMON $DAEMON_ARGS"
 
-	start-stop-daemon --start --background --no-close --make-pidfile --pidfile $PIDFILE --startas /bin/bash -- \
-		-c "exec $DAEMON $DAEMON_ARGS > $LOGFILE 2&>1" \
+	start-stop-daemon --start --background --make-pidfile --pidfile $PIDFILE --startas /bin/bash -- \
+		-c "exec stdbuf -oL -eL $DAEMON $DAEMON_ARGS > $LOGFILE 2>&1" \
 		|| return 2
 	# Add code here, if necessary, that waits for the process to be ready
 	# to handle requests from services started subsequently which depend
