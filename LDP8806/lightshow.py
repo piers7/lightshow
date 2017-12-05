@@ -183,6 +183,7 @@ while True:
 	if hour < hourFrom or hour >= hourTo:
 		print "Waiting %d" % hour
 		setAllOff()
+		setPixel(hour,[255,0,0])
 		paint()
 		time.sleep(10*60)
 	else:
