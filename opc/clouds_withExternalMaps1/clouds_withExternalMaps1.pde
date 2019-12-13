@@ -7,7 +7,7 @@ void setup()
   size(300, 200);
 
   opc1 = setupDropWall("pizero1.local");
-  // opc2 = setupBackVeranda("pizero3.local");
+  opc2 = setupBackVeranda("pizero3.local");
   
   colorMode(HSB, 100);
 }
@@ -20,6 +20,10 @@ OPC setupDropWall(String address){
   float spacing = height / 20.0;
   //   void ledGrid(int index, int stripLength, int numStrips, float x, float y, float ledSpacing, float stripSpacing, float angle, boolean zigzag)
 
+  // cheat:
+  // opc.ledGrid(0, 4, 12*3, width/2, height/2, spacing, spacing*2, PI/2, true);
+
+  // do it properly:
   // starting offset of 50,100 is because each block has 48px + 2px unused
   opc.ledGrid(0, 4, 12, width/4, height/2, spacingX, spacing, 0, true);
   opc.ledGrid(50, 4, 12, 2 * width/4, height/2, spacingX, spacing, 0, true);
