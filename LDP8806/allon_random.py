@@ -36,6 +36,8 @@ while True:
         displayPixel[1] = (displayPixel[1] + 5) % 255
         displayPixel[2] = (displayPixel[2] + 10) % 255
 
+	print "R %d G %d B %d" % (displayPixel[0],displayPixel[1],displayPixel[2])
+
         for p in range(pixels):
                 offset = p * 3
                 buff[offset] = gamma[displayPixel[1]]

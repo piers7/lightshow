@@ -56,6 +56,7 @@ while True:
         # time.sleep(.01)
         currentPos = (currentPos + 1)
         if(currentPos > pixels -1):
+		print "Run with r%d g%d b%d" % (displayPixel[0],displayPixel[1],displayPixel[2])
                 currentPos = 0
                 displayPixel[0] = random.randrange(0,255)
                 displayPixel[1] = random.randrange(0,255)
